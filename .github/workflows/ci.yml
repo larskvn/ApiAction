@@ -15,7 +15,7 @@ permissions:
   actions: write        # Permite ejecutar acciones
   issues: write         # Permite escribir en problemas
   packages: write       # Permite escribir en paquetes
-  metadata: read        # Permite leer metadatos del repositorio
+
 
 jobs:
   build:
