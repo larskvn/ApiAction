@@ -2,27 +2,26 @@ name: Java CI with Maven
 
 on:
   push:
-    branches:
-      - testing
+    branches: [ "development", "testing" ] # Otras ramas si lo deseas
   pull_request:
-    branches:
-      - testing
+    branches: [ "development", "testing" ]
 
 jobs:
   build:
+
     runs-on: ubuntu-latest
 
     steps:
-      - name: Check out the repository
-        uses: actions/checkout@v2
+    - name: Checkout code
+      uses: actions/checkout@v4
+      
+    - name: Set up JDK 17
+      uses: actions/setup-java@v2 # Asegúrate de usar la versión correcta
+      with:
+        java-version: '17'          # Especifica la versión de Java
+        distribution: 'temurin'     # Distribución de OpenJDK
+        cache: maven                # Habilita el cache de Maven
 
-      - name: Set up JDK 17
-        uses: actions/setup-java@v2
-        with:
-          java-version: '17'
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
 
-      - name: Build with Maven
-        run: mvn clean install
-
-      - name: Run tests
-        run: mvn test
