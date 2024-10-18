@@ -7,11 +7,10 @@ on:
     branches: [ "development", "testing" ]
 
 permissions:
-  contents: read
-  actions: write
-  issues: write
-  packages: write
-  metadata: read
+  contents: read        # Permite leer el contenido del repositorio
+  actions: write        # Permite ejecutar acciones
+  issues: write         # Permite escribir en problemas
+  packages: write       # Permite escribir en paquetes
 
 jobs:
   build:
